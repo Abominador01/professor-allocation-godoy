@@ -42,7 +42,7 @@ public class ProfessorRepositoryTests {
 	public void create() {
 
 		Professor ProfessorBeingCreated = new Professor();
-		ProfessorBeingCreated.setName("Curso de Informática");
+		ProfessorBeingCreated.setName("José");
 
 		ProfessorBeingCreated = repository.save(ProfessorBeingCreated);
 		System.out.println(ProfessorBeingCreated);
@@ -52,7 +52,7 @@ public class ProfessorRepositoryTests {
 	public void update() {
 		Professor ProfessorBeingCreated = new Professor();
 		ProfessorBeingCreated.setId(5L);
-		ProfessorBeingCreated.setName("Curso de Fisioterapia");
+		ProfessorBeingCreated.setName("Alexandre");
 
 		ProfessorBeingCreated = repository.save(ProfessorBeingCreated);
 		System.out.println(ProfessorBeingCreated);
