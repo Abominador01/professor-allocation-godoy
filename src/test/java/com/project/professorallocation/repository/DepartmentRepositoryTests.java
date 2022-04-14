@@ -30,17 +30,49 @@ public class DepartmentRepositoryTests {
 			System.out.println(item);
 
 		}
-
 	}
 
+	@Test
+	public void findSpecificDepartment() {
+		Department dept = repository.findById(8L).orElse(null);
+		System.out.println(dept);
+
+	}
+	@Test
+	public void findDepartmentsByPartOfTheName() {
+		List<Department> depts = repository.findByNameLike("%tic%");
+		
+		System.out.println("elementos retornados: "+ depts.size());
+		depts.forEach(System.out::println);
+	}
 	@Test
 	public void create() {
 
 		Department departmentBeingCreated = new Department();
-		departmentBeingCreated.setName("Departamento de Filosofia");
+		departmentBeingCreated.setName("Departamento de Informática");
 
 		departmentBeingCreated = repository.save(departmentBeingCreated);
 		System.out.println(departmentBeingCreated);
 	}
 
+	@Test
+	public void update() {
+		Department departmentBeingCreated = new Department();
+		departmentBeingCreated.setId(5L);
+		departmentBeingCreated.setName("Departamento de Fisioterapia");
+
+		departmentBeingCreated = repository.save(departmentBeingCreated);
+		System.out.println(departmentBeingCreated);
+	}
+
+	@Test
+	public void delete() {
+		repository.deleteById(6L);
+
+	}
+
+	@Test
+	public void deleteAllItems() {
+		repository.deleteAllInBatch();
+	}
 }
