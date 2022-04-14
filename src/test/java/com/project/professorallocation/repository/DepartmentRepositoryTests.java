@@ -32,4 +32,15 @@ public class DepartmentRepositoryTests {
 		}
 
 	}
+
+	@Test
+	public void create() {
+
+		Department departmentBeingCreated = new Department();
+		departmentBeingCreated.setName("Departamento de Filosofia");
+
+		departmentBeingCreated = repository.save(departmentBeingCreated);
+		System.out.println(departmentBeingCreated);
+	}
+
 }

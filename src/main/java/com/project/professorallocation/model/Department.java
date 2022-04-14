@@ -15,18 +15,18 @@ public class Department {
 	private Long id;
 
 	@Column(name = "name", length = 100, nullable = false)
-	private String nome;
+	private String name;
 
 	public Department() {
 		super();
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getId() {
@@ -39,7 +39,7 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [nome=" + nome + ", id=" + id + "]";
+		return "Department [nome=" + name + ", id=" + id + "]";
 	}
 
 }
