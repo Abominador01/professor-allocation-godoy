@@ -18,7 +18,7 @@ import com.project.professorallocation.model.Professor;
 @TestPropertySource(locations = "classpath:application.properties")
 public class ProfessorRepositoryTests {
 	@Autowired
-	ProfessorRepository repository;
+	private ProfessorRepository repository;
 
 	@Test
 	public void findAll() {
@@ -34,28 +34,32 @@ public class ProfessorRepositoryTests {
 
 	@Test
 	public void findSpecificProfessor() {
-		Professor professor = repository.findById(8L).orElse(null);
+		Professor professor = repository.findById(4L).orElse(null);
 		System.out.println(professor);
 
 	}
+
 	@Test
 	public void create() {
 
-		Professor ProfessorBeingCreated = new Professor();
-		ProfessorBeingCreated.setName("José");
+		Professor professorBeingCreated = new Professor();
+		professorBeingCreated.setName("Iran");
+		professorBeingCreated.setDepartmentId(4L);
+		professorBeingCreated.setCpf("11122233345");
+		
 
-		ProfessorBeingCreated = repository.save(ProfessorBeingCreated);
-		System.out.println(ProfessorBeingCreated);
+		professorBeingCreated = repository.save(professorBeingCreated);
+		System.out.println(professorBeingCreated);
 	}
 
 	@Test
 	public void update() {
-		Professor ProfessorBeingCreated = new Professor();
-		ProfessorBeingCreated.setId(5L);
-		ProfessorBeingCreated.setName("Alexandre");
+		Professor professorBeingCreated = new Professor();
+		professorBeingCreated.setId(5L);
+		professorBeingCreated.setName("Alexandre");
 
-		ProfessorBeingCreated = repository.save(ProfessorBeingCreated);
-		System.out.println(ProfessorBeingCreated);
+		professorBeingCreated = repository.save(professorBeingCreated);
+		System.out.println(professorBeingCreated);
 	}
 
 	@Test
@@ -69,4 +73,3 @@ public class ProfessorRepositoryTests {
 		repository.deleteAllInBatch();
 	}
 }
-

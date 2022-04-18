@@ -18,7 +18,7 @@ import com.project.professorallocation.model.Course;
 @TestPropertySource(locations = "classpath:application.properties")
 public class CourseRepositoryTests {
 	@Autowired
-	CourseRepository repository;
+	private CourseRepository repository;
 
 	@Test
 	public void findAll() {
@@ -33,29 +33,21 @@ public class CourseRepositoryTests {
 	}
 
 	@Test
-	public void findSpecificCourse() {
-		Course course = repository.findById(8L).orElse(null);
+	public void findSpecificElement() {
+		Course course = repository.findById(1L).orElse(null);
 		System.out.println(course);
 
 	}
+
 	@Test
 	public void create() {
 
-		Course CourseBeingCreated = new Course();
-		CourseBeingCreated.setName("Curso de Informática");
+		Course courseBeingCreated = new Course();
+		courseBeingCreated.setName("enfermagem");
+	
 
-		CourseBeingCreated = repository.save(CourseBeingCreated);
-		System.out.println(CourseBeingCreated);
-	}
-
-	@Test
-	public void update() {
-		Course CourseBeingCreated = new Course();
-		CourseBeingCreated.setId(5L);
-		CourseBeingCreated.setName("Curso de Fisioterapia");
-
-		CourseBeingCreated = repository.save(CourseBeingCreated);
-		System.out.println(CourseBeingCreated);
+		courseBeingCreated = repository.save(courseBeingCreated);
+		System.out.println(courseBeingCreated);
 	}
 
 	@Test

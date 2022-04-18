@@ -49,7 +49,7 @@ public class DepartmentRepositoryTests {
 	public void create() {
 
 		Department departmentBeingCreated = new Department();
-		departmentBeingCreated.setName("Departamento de Informática");
+		departmentBeingCreated.setName("Departamento de Física");
 
 		departmentBeingCreated = repository.save(departmentBeingCreated);
 		System.out.println(departmentBeingCreated);
