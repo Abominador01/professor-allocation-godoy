@@ -18,7 +18,7 @@ import com.project.professorallocation.model.Department;
 @TestPropertySource(locations = "classpath:application.properties")
 public class DepartmentRepositoryTests {
 	@Autowired
-	DepartmentRepository repository;
+	private DepartmentRepository repository;
 
 	@Test
 	public void findAll() {
