@@ -13,6 +13,4 @@ public class DepartmentService {
 		this.repository = repository;
 	}
 
-
-	
 }
