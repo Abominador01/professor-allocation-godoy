@@ -38,11 +38,11 @@ public class AllocationRepositoryTest {
 
 		System.out.println(allocation);
 	}
+
 	@Test
 	public void findAll() {
 		List<Allocation> allAllocations = repository.findAll();
 		allAllocations.forEach(System.out::println);
-		
-		
+
 	}
 }
