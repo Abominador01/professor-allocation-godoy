@@ -39,6 +39,10 @@ public class AllocationService {
 	}
 
 	private Allocation saveInternal(Allocation allocation) {
+		if (hasCollision(allocation)) {
+			throw new RuntimeException("There is a time collision for this allocation");
+
+		}
 		Allocation insertedAllocation = repository.save(allocation);
 		return insertedAllocation;
 	}
@@ -51,5 +55,29 @@ public class AllocationService {
 			return saveInternal(allocation);
 
 		}
+	}
+
+	private boolean hasCollision(Allocation newAllocation) {
+		List<Allocation> currentAllocations = repository.findByProfessorId(newAllocation.getProfessorId());
+		boolean collisionFound = false;
+
+		for (Allocation currentAllocation : currentAllocations) {
+			if (hasCollision(currentAllocation, newAllocation)) {
+				collisionFound = true;
+				break;
+
+			}
+		}
+		return collisionFound;
+	}
+
+	private boolean hasCollision(Allocation currentAllocation, Allocation newAllocation) {
+		boolean collision = !currentAllocation.getId().equals(newAllocation.getId())
+				&& currentAllocation.getProfessorId().equals(newAllocation.getProfessorId())
+				&& currentAllocation.getDayOfWeek().equals(newAllocation.getDayOfWeek())
+				&& currentAllocation.getStartHour().compareTo(newAllocation.getEndHour()) < 0
+				&& newAllocation.getStartHour().compareTo(currentAllocation.getEndHour()) < 0;
+		return collision;
+
 	}
 }

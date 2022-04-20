@@ -45,4 +45,8 @@ public class AllocationRepositoryTest {
 		allAllocations.forEach(System.out::println);
 
 	}
+	@Test
+	public void deleteAllItems() {
+		repository.deleteAllInBatch();
+	}
 }
