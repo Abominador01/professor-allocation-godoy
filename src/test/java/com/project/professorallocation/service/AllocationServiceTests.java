@@ -6,12 +6,12 @@ import java.time.DayOfWeek;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
 import com.project.professorallocation.model.Allocation;
 
-@SpringBootApplication
+@SpringBootTest
 @TestPropertySource(locations = "classpath:application.properties")
 public class AllocationServiceTests {
 
@@ -25,8 +25,8 @@ public class AllocationServiceTests {
 
 		Allocation allocation = new Allocation();
 		allocation.setDayOfWeek(DayOfWeek.MONDAY);
-		allocation.setProfessorId(2L);
-		allocation.setCourseId(2L);
+		allocation.setProfessorId(3L);
+		allocation.setCourseId(3L);
 		allocation.setStartHour(sdf.parse("19:00-0300"));
 		allocation.setEndHour(sdf.parse("21:00-0300"));
 

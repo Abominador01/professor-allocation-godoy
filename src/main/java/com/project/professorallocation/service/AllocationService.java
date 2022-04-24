@@ -61,8 +61,8 @@ public class AllocationService {
 		List<Allocation> currentAllocations = repository.findByProfessorId(newAllocation.getProfessorId());
 		boolean collisionFound = false;
 
-		for (Allocation currentAllocation : currentAllocations) {
-			if (hasCollision(currentAllocation, newAllocation)) {
+		for (Allocation item : currentAllocations) {
+			if (hasCollision(item, newAllocation)) {
 				collisionFound = true;
 				break;
 
