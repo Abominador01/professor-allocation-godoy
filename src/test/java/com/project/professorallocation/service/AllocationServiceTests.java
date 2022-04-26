@@ -25,8 +25,8 @@ public class AllocationServiceTests {
 
 		Allocation allocation = new Allocation();
 		allocation.setDayOfWeek(DayOfWeek.MONDAY);
-		allocation.setProfessorId(3L);
-		allocation.setCourseId(3L);
+		allocation.setProfessorId(6L);
+		allocation.setCourseId(2L);
 		allocation.setStartHour(sdf.parse("19:00-0300"));
 		allocation.setEndHour(sdf.parse("21:00-0300"));
 

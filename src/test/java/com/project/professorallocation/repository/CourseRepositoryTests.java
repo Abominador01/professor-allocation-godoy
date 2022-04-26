@@ -43,7 +43,7 @@ public class CourseRepositoryTests {
 	public void create() {
 
 		Course courseBeingCreated = new Course();
-		courseBeingCreated.setName("enfermagem");
+		courseBeingCreated.setName("S.I");
 	
 
 		courseBeingCreated = repository.save(courseBeingCreated);

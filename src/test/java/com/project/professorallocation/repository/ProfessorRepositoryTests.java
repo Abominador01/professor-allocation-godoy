@@ -43,8 +43,8 @@ public class ProfessorRepositoryTests {
 	public void create() {
 
 		Professor professorBeingCreated = new Professor();
-		professorBeingCreated.setName("Iran");
-		professorBeingCreated.setDepartmentId(4L);
+		professorBeingCreated.setName("Matheus");
+		professorBeingCreated.setDepartmentId(1L);
 		professorBeingCreated.setCpf("11122233345");
 		
 
