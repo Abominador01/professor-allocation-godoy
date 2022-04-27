@@ -43,7 +43,7 @@ public class CourseRepositoryTests {
 	public void create() {
 
 		Course courseBeingCreated = new Course();
-		courseBeingCreated.setName("S.I");
+		courseBeingCreated.setName("Banco de Dados");
 	
 
 		courseBeingCreated = repository.save(courseBeingCreated);

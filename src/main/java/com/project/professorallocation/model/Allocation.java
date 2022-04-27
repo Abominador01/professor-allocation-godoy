@@ -37,14 +37,14 @@ public class Allocation {
 	@Column(nullable = false)
 	private Date endHour;
 
-	@Column(name = "professor_Id", nullable = false, unique = true)
+	@Column(name = "professor_Id", nullable = false)
 	private Long professorId;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "professor_Id", nullable = false, insertable = false, updatable = false)
 	private Professor professor;
 
-	@Column(name = "course_Id", nullable = false, unique = true)
+	@Column(name = "course_Id", nullable = false)
 	private Long courseId;
 
 	@ManyToOne(optional = false)

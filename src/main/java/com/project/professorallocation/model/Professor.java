@@ -23,7 +23,7 @@ public class Professor {
 	@Column(length = 11, nullable = false, unique = true)
 	private String cpf;
 
-	@Column(name = "department_Id", nullable = false, unique = true)
+	@Column(name = "department_Id", nullable = false)
 	private Long departmentId;
 
 	@ManyToOne(optional = false)
