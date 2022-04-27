@@ -57,6 +57,14 @@ public class AllocationServiceTests {
 	}
 
 	@Test
+	public void findById() {
+
+		Long id = 2L;
+		Allocation allocation = service.findById(id);
+		System.out.println(allocation);
+	}
+
+	@Test
 	public void deleteById() {
 		Long id = 3L;
 
