@@ -46,8 +46,16 @@ public class DepartmentService {
 
 	}
 
-	public List<Department> findAll() {
-		return repository.findAll();
+	public List<Department> findAll(String name) {
+		if(name == null || name.trim().equals("")) {
+			
+			return repository.findAll();
+		}else {
+			
+			return repository.findByNameContaining(name);
+		}
+		
+		
 
 	}
 }
