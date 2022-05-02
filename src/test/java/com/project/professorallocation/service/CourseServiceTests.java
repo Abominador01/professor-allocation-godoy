@@ -37,7 +37,7 @@ public class CourseServiceTests {
 
 	@Test
 	public void findAll() {
-		List<Course> course = service.findAll();
+		List<Course> course = service.findAll(null);
 
 		course.forEach(System.out::println);
 	}

@@ -48,7 +48,7 @@ public class ProfessorServiceTests {
 
 	@Test
 	public void findAll() {
-		List<Professor> professor = service.findAll();
+		List<Professor> professor = service.findAll(null);
 
 		professor.forEach(System.out::println);
 	}

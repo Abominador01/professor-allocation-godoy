@@ -26,6 +26,10 @@ public class AllocationService {
 
 	}
 
+	public List<Allocation> findByProfessorId(Long id) {
+		return repository.findByProfessorId(id);
+	}
+
 	public void deleteById(Long id) {
 		if (repository.existsById(id)) {
 			repository.deleteById(id);
