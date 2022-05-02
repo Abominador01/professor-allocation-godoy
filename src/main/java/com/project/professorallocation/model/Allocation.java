@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 @Entity
 @Table(name = "allocation")
 public class Allocation {
-
+	@JsonProperty(access = Access.READ_ONLY)
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +48,7 @@ public class Allocation {
 	@Column(nullable = false)
 	private Date endHour;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "professor_Id", nullable = false)
 	private Long professorId;
 
@@ -53,6 +56,7 @@ public class Allocation {
 	@JoinColumn(name = "professor_Id", nullable = false, insertable = false, updatable = false)
 	private Professor professor;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "course_Id", nullable = false)
 	private Long courseId;
 
