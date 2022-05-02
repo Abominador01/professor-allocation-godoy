@@ -46,8 +46,15 @@ public class CourseService {
 
 	}
 
-	public List<Course> findAll() {
-		return repository.findAll();
+	public List<Course> findAll(String name) {
+		if(name == null || name.trim().equals("")) {
+			
+			return repository.findAll();
+		}else {
+			
+			return repository.findByNameContaining(name);
+		}
+		
 
 	}
 }

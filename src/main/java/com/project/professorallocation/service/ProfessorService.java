@@ -46,8 +46,16 @@ public class ProfessorService {
 
 	}
 
-	public List<Professor> findAll() {
-		return repository.findAll();
+	public List<Professor> findAll(String name) {
+if(name == null || name.trim().equals("")) {
+			
+			return repository.findAll();
+		}else {
+			
+			return repository.findByNameContaining(name);
+		}
+		
+		
 
 	}
 }

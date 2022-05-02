@@ -37,8 +37,7 @@ public class DepartmentServiceTests {
 
 	@Test
 	public void findAll() {
-		List<Department> department = service.findAll();
-
+		List<Department> department = service.findAll(null);
 		department.forEach(System.out::println);
 
 	}
