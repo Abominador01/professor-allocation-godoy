@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.professorallocation.model.Course;
 import com.project.professorallocation.service.CourseService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(path = "/Courses")
 public class CourseController {
@@ -30,6 +34,7 @@ public class CourseController {
 		this.service = service;
 	}
 
+	@ApiOperation(value = "Find all courses")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Course>> findAll(@RequestParam(name = "nm", required = false) String nome) {
@@ -39,6 +44,11 @@ public class CourseController {
 
 	}
 
+	@ApiOperation(value = "Finds an course by id")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "ok"),
+		@ApiResponse(code = 404, message = "Course not found")
+	})
 	@GetMapping(path = "/{course_id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Course> findById(@PathVariable(name = "Course_id") Long id) {
@@ -52,29 +62,50 @@ public class CourseController {
 		}
 	}
 
+	@ApiOperation(value = "Create a new Course ")
+	@ApiResponses({ 
+		@ApiResponse(code = 200, message = "New Course created"),
+		@ApiResponse(code = 400, message = "Bad Request") })
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Course> create(@RequestBody Course course) {
-		Course item = service.create(course);
+		try {
+			Course item = service.create(course);
 
-		return new ResponseEntity<>(item, HttpStatus.CREATED);
+			return new ResponseEntity<>(item, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
+	@ApiOperation(value = "Update an existing Course")
+	@ApiResponses({ 
+		@ApiResponse(code = 200, message = "Course updated"),
+		@ApiResponse(code = 404, message = "Course not found"),
+		@ApiResponse(code = 400, message = "Bad Request")
+	})
 	@PutMapping(path = "/{course_id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Course> update(@PathVariable(name = "course_id") Long id, @RequestBody Course course) {
-		course.setId(id);
-		Course item = service.update(course);
+		try {
+			course.setId(id);
+			Course item = service.update(course);
 
-		if (item == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			if (item == null) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-		} else {
-			return new ResponseEntity<Course>(item, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Course>(item, HttpStatus.CREATED);
+			}
+		} catch (Exception ex) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
 		}
 
 	}
 
+	@ApiOperation(value = "Delete an Course by id")
+	@ApiResponses({ @ApiResponse(code = 204, message = "Course Deleted") })
 	@DeleteMapping(path = "/{course_id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> delete(@PathVariable(name = "course_id") Long id) {
